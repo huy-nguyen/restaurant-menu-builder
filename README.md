@@ -1,5 +1,15 @@
 ## Restaurant Menu Builder
 
-A Restaurnt menu builder built with React, Redux, TypeScript and Webpack
+A Restaurant menu builder built with React, Redux, TypeScript and Webpack.
 
-To build, first install Compass by following the directions (here)[http://compass-style.org/install/], run `npm run build` and then point your local webserver to the project's `src` directory.
+To build:
+
+- Install Compass following the instructions (here)[http://compass-style.org/install/].
+
+- `cd` to the `src` directory and run `compass compile`.
+
+- Run `npm install`.
+
+- Run `npm run build`.
+
+- Start up a new webserver or point yours to the `src` directory.
