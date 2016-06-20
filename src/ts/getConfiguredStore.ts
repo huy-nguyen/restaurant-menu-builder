@@ -21,6 +21,9 @@ type creatStoreType = typeof ExternalRedux.createStore;
 type storeType = ExternalRedux.IStore<IStoreState>;
 
 export default function getConfiguredStore() {
+  // Middlewares used:
+  // - Thunk to allow dispatching of functions (in addition to regular objects):
+  // - Logger to log all actions out to the console.
   const middlewares = [thunk as middlewareType, createLogger() as middlewareType];
   // TODO: the casting of `reduxLogger` might not be correct:
   const temp = (applyMiddleware as applyMiddleWareType)<IStoreState>(...middlewares);
