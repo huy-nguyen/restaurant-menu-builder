@@ -66,12 +66,12 @@ export default class MenuItemAdder extends React.Component<IProps, IState> {
           {/* First row of inputs::*/}
           <div>
             <div className='form-group'>
-              <label className='sr-only' for='item-input-name'>Name: </label>
+              <label className='sr-only' htmlFor='item-input-name'>Name: </label>
               <input type='text' placeholder='Name' className='form-control'
                 value={name} onChange={this.onNameChange} name='Name' id='item-input-name'/>
             </div>
             <div className='form-group'>
-              <label className='sr-only' for='item-input-category'>Category: </label>
+              <label className='sr-only' htmlFor='item-input-category'>Category: </label>
               <input type='text' placeholder='Category'  className='form-control'
                 value={category} onChange={this.onCategoryChange} name='Category' id='item-input-category'/>
             </div>
@@ -80,7 +80,7 @@ export default class MenuItemAdder extends React.Component<IProps, IState> {
           {/* Second row of inputs::*/}
           <div>
             <div className='form-group'>
-              <label className='sr-only' for='item-input-description'>Description: </label>
+              <label className='sr-only' htmlFor='item-input-description'>Description: </label>
               <input type='text' placeholder='Description'  className='form-control'
                 value={description} onChange={this.onDescriptionChange} name='Description' id='item-input-description'/>
             </div>
