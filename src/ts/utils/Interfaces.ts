@@ -22,10 +22,6 @@ export interface IMenuItemRaw {
   Vegetarian: number
 }
 
-// Interface for a parsed menu item (minus the id which is not related to
-// the content of that item). The difference between this and IMenuItemRaw is
-// that only the parsers will interact with IMenuItemRaw whereas the rest of the
-// application will use this interface.
 export interface IMenuItemMetaData {
   // For these properties, see the definition of IMenuItemRaw:
   category: string
@@ -34,9 +30,12 @@ export interface IMenuItemMetaData {
   price: number
   isUndercooked: boolean
   isVegetarian: boolean
-
 }
 
+// Interface for a parsed menu item (minus the id which is not related to
+// the content of that item). The difference between this and IMenuItemRaw is
+// that only the parsers will interact with IMenuItemRaw whereas the rest of the
+// application will use this interface.
 export interface IMenuItem extends IMenuItemMetaData {
   // Whether this item is selected to be displayed on the menu or not. By
   // default, all newly added items are selected:
@@ -69,11 +68,6 @@ export interface IStoreStateSerialized {
 }
 
 /** End of interfaces for the Redux store */
-
-// The context argument to all container components:
-export interface IContext {
-  store: IStore<IStoreState>
-}
 
 /** Typings for actions */
 // All action types in this application:
