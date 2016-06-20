@@ -1,0 +1,84 @@
+h1,
+h2,
+h3,
+h4,
+h5 {
+  text-align: center;
+  text-transform: capitalize;
+}
+
+h4 {
+  text-transform: uppercase;
+}
+.editor {
+  border-right: 1px solid black;
+}
+
+.item-adder {
+  margin-left: 32px;
+  legend {
+    text-align: center;
+  }
+}
+
+.menu-item {
+  display: block;
+  margin: 0 0 10px 30px;
+
+  text-decoration: line-through;
+  &.selected {
+    text-decoration: none;
+  }
+
+  .item-content {
+    margin-left: 20px;
+    cursor: pointer;
+    &:hover {
+      color: green;
+    }
+  }
+  .item-name {
+    text-transform: capitalize;
+  }
+}
+
+.category-preview {
+  width: 70%;
+  margin: 0 auto;
+  &:not(:last-child) {
+    border-bottom: 1px solid grey;
+  }
+
+  & + .category-preview {
+    margin-top: 20px;
+  }
+}
+
+.item-preview {
+  & + .item-preview {
+    margin-top: 10px;
+  }
+
+  .item-title {
+    small {
+      margin-left: 10px;
+    }
+  }
+
+  .item-description {
+    text-align: center;
+  }
+
+  .info {
+    text-align: center;
+  }
+
+  .undercooked {
+    color: red;
+  }
+  .vegetarian {
+    color: green;
+  }
+}
+
+

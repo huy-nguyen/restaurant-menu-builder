@@ -1,0 +1,21 @@
+{
+  "globalDependencies": {
+    "classnames": "registry:dt/classnames#0.0.0+20160316155526",
+    "jquery": "registry:dt/jquery#1.10.0+20160417213236",
+    "node": "registry:dt/node#6.0.0+20160613154055",
+    "react": "registry:dt/react#0.14.0+20160602151522",
+    "react-dom": "registry:dt/react-dom#0.14.0+20160412154040",
+    "redux": "registry:dt/redux#3.3.1+20160326112656",
+    "redux-logger": "registry:dt/redux-logger#2.6.0+20160619033847",
+    "redux-promise": "registry:dt/redux-promise#0.5.3+20160322194740",
+    "underscore.string": "registry:dt/underscore.string#0.0.0+20160514164108"
+  },
+  "dependencies": {
+    "es6-promise": "registry:npm/es6-promise#3.0.0+20160211003958",
+    "external-redux": "registry:npm/redux#3.0.6+20160214194820",
+    "lodash": "registry:npm/lodash#4.0.0+20160416211519",
+    "node-uuid": "registry:npm/node-uuid#1.4.7+20160503013124",
+    "react-redux": "registry:npm/react-redux#4.4.0+20160614222153",
+    "redux-thunk": "registry:npm/redux-thunk#2.0.0+20160525185520"
+  }
+}

@@ -1,0 +1,13 @@
+.DS_store
+.sass-cache
+src/js
+typings
+!src/js/git-tracked
+node_modules
+css
+release
+.tscache
+**/*.js.map
+dist
+tscommand-*.tmp.txt
+*.sublime-project
