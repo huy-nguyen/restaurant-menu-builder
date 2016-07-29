@@ -1,3 +1,4 @@
+declare module 'redux' {
 /**
  * An *action* is a plain object that represents an intention to change the
  * state. Actions are the only way to get data into the store. Any data,
@@ -391,3 +392,4 @@ export function compose<R>(
   f1: (a: any) => R,
   ...funcs: Function[]
 ): (...args: any[]) => R;
+}

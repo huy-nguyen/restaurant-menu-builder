@@ -3,8 +3,7 @@
 // Definitions by: Qubo <https://github.com/tkqubo>, Sean Kelley <https://github.com/seansfkelley>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
-/// <reference types="react" />
-/// <reference types="redux" />
+declare module 'react-redux' {
 
 import { ComponentClass, Component, StatelessComponent, ReactNode } from 'react';
 import { Store, Dispatch, ActionCreator } from 'redux';
@@ -41,14 +40,14 @@ export interface InferableComponentDecorator {
  * @param mergeProps
  * @param options
  */
-export declare function connect(): InferableComponentDecorator;
+export function connect(): InferableComponentDecorator;
 
-export declare function connect<TStateProps, TDispatchProps, TOwnProps>(
+export function connect<TStateProps, TDispatchProps, TOwnProps>(
     mapStateToProps: MapStateToProps<TStateProps, TOwnProps>,
     mapDispatchToProps?: MapDispatchToPropsFunction<TDispatchProps, TOwnProps> | MapDispatchToPropsObject
 ): ComponentDecorator<TStateProps & TDispatchProps, TOwnProps>;
 
-export declare function connect<TStateProps, TDispatchProps, TOwnProps>(
+export function connect<TStateProps, TDispatchProps, TOwnProps>(
     mapStateToProps: MapStateToProps<TStateProps, TOwnProps>,
     mapDispatchToProps: MapDispatchToPropsFunction<TDispatchProps, TOwnProps> | MapDispatchToPropsObject,
     mergeProps: MergeProps<TStateProps, TDispatchProps, TOwnProps>,
@@ -60,11 +59,11 @@ interface MapStateToProps<TStateProps, TOwnProps> {
 }
 
 interface MapDispatchToPropsFunction<TDispatchProps, TOwnProps> {
-    (dispatch: Dispatch, ownProps?: TOwnProps): TDispatchProps;
+    (dispatch: Dispatch<any>, ownProps?: TOwnProps): TDispatchProps;
 }
 
 interface MapDispatchToPropsObject {
-    [name: string]: ActionCreator;
+    [name: string]: ActionCreator<any>;
 }
 
 interface MergeProps<TStateProps, TDispatchProps, TOwnProps> {
@@ -86,11 +85,12 @@ export interface ProviderProps {
     /**
      * The single Redux store in your application.
      */
-    store?: Store;
+    store?: Store<any>;
     children?: ReactNode;
 }
 
 /**
  * Makes the Redux store available to the connect() calls in the component hierarchy below.
  */
-export declare class Provider extends Component<ProviderProps, {}> { }
+export class Provider extends Component<ProviderProps, {}> { }
+}

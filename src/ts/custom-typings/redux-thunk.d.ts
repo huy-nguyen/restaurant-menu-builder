@@ -3,17 +3,18 @@
 // Definitions by: Qubo <https://github.com/tkqubo>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
-/// <reference types="redux" />
+declare module 'redux-thunk' {
 
-import * as Redux from "redux";
+  import * as Redux from "redux";
 
-declare var thunk: ReduxThunk.Thunk;
-export default thunk;
-export as namespace ReduxThunk;
+  var thunk: ReduxThunk.Thunk;
+  export default thunk;
 
-declare namespace ReduxThunk {
-    export interface Thunk extends Redux.Middleware {}
-    export interface ThunkInterface {
-      <T>(dispatch: Redux.Dispatch, getState?: () => T): any;
-    }
+  export namespace ReduxThunk {
+      export interface Thunk extends Redux.Middleware {}
+      export interface ThunkInterface {
+        <T>(dispatch: Redux.Dispatch<any>, getState?: () => T): any;
+      }
+  }
 }
+
