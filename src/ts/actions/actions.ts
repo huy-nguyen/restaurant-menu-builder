@@ -21,7 +21,9 @@ import {
   loadLocalItems
 }from '../utils/localStorage';
 import MenuItem from '../models/MenuItem';
-import * as ExternalRedux from 'external-redux';
+import {
+  Dispatch
+} from 'redux';
 import {
   getIsFetchingStatus
 }from '../reducers/reducer';
@@ -54,7 +56,7 @@ export const toggleItem = (id: string): IActionModify => ({
 // fetch is finished so that the spinner can be removed. For  background on
 // thunks, see https://github.com/gaearon/redux-thunk
 export const fetchMenuItems: IThunk<IStoreState> = () => {
-  return function(dispatch: ExternalRedux.IDispatch, getState: () => IStoreState): Promise<any> {
+  return function(dispatch: Dispatch<IStoreState>, getState: () => IStoreState): Promise<any> {
 
     function onSuccess(rawItems: IMenuItemRaw[]) {
       dispatch({

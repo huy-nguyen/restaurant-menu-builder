@@ -3,13 +3,15 @@ import App from './App';
 import {
   Provider
 } from 'react-redux';
-import * as ExternalRedux from 'external-redux';
+import {
+  Store
+} from 'redux'
 import {
   IStoreState
 } from '../utils/Interfaces';
 
 interface IProps {
-  store: ExternalRedux.IStore<IStoreState>
+  store: Store<IStoreState>
 }
 
 interface IState {

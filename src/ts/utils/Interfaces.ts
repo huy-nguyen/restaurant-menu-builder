@@ -1,9 +1,9 @@
-import {
-  IAction,
-  IDispatch,
-  IStore
-} from 'external-redux';
 import MenuItem from '../models/MenuItem';
+import {
+  Action,
+  Store,
+  Dispatch
+} from 'redux';
 
 // Format of a menu item loaded from the API:
 export interface IMenuItemRaw {
@@ -72,7 +72,7 @@ export interface IStoreStateSerialized {
 
 // The context argument to all container components:
 export interface IContext {
-  store: IStore<IStoreState>
+  store: Store<IStoreState>
 }
 
 /** Typings for actions */
@@ -103,23 +103,23 @@ export interface IActionFetchFailure {
 }
 
 // Actions that change existing items:
-export interface IActionModify extends IAction {
+export interface IActionModify extends Action {
   type: ActionType
   id: string
 }
 
 // Action to add new item:
-export interface IActionAdd extends IAction {
+export interface IActionAdd extends Action {
   type: ActionType
   data: IMenuItemMetaData
 }
 
-export interface IActionReceiveItemsFromAPI extends IAction {
+export interface IActionReceiveItemsFromAPI extends Action {
   type: ActionType
   data: IMenuItemRaw[]
 }
 
-export interface IActionReceiveItemsFromLocal extends IAction {
+export interface IActionReceiveItemsFromLocal extends Action {
   type: ActionType
   data: MenuItem[]
 }
@@ -127,5 +127,5 @@ export interface IActionReceiveItemsFromLocal extends IAction {
 export type IAction = IActionModify | IActionAdd | IActionReceiveItemsFromAPI |
   IActionReceiveItemsFromLocal | IActionNotify | IActionFetchFailure;
 
-export type IThunk<T> = () => (dispatch: IDispatch, getState?: () => T) => any;
+export type IThunk<T> = () => (dispatch: Dispatch<IStoreState>, getState?: () => T) => any;
 /** End of typings for actions */

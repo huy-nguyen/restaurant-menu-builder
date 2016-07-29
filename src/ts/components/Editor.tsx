@@ -4,7 +4,6 @@ import {
   IContext,
   IStoreState,
   IMenuItem,
-  IThunk
 } from '../utils/Interfaces';
 import {
   toggleItem,
@@ -20,9 +19,6 @@ import {
   fetchMenuItems
 } from '../actions/actions';
 import {
-  IDispatch
-} from 'external-redux';
-import {
   getAvailableMenuItems,
   getIsFetchingStatus,
   getErrorMessage
@@ -30,8 +26,13 @@ import {
 import {
   // This signature allows for the input to `dispatch` to be a function in
   // addition to being an object:
-  IDispatch as IDispatchThunk
-}from '~redux-thunk~redux'
+  // IDispatch as IDispatchThunk
+  ReduxThunk
+}from 'redux-thunk'
+import {
+  Dispatch,
+  Action
+} from 'redux';
 
 // All properties are optional because they will be obtained from the Redux
 // store (via the `connect` call below):
@@ -96,7 +97,7 @@ function mapStateToProps(state: IStoreState): IProps {
   } as IProps;
 }
 
-const mapDispatchToProps = (dispatch: IDispatch) => ({
+const mapDispatchToProps = (dispatch: Dispatch<IStoreState>) => ({
   onItemClick(id: string) {
     dispatch(toggleItem(id))
   },
@@ -109,9 +110,11 @@ const mapDispatchToProps = (dispatch: IDispatch) => ({
   fetchItemsCallback() {
     // Execute `fetchMenuItems` immediately because it takes no argument (for
     // now):
-    (dispatch as IDispatchThunk)(fetchMenuItems());
+    (dispatch as ReduxThunk.ThunkInterface)(fetchMenuItems());
   }
 } as IProps)
+
+
 
 
 // Subscribe to store's updates:

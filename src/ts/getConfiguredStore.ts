@@ -1,7 +1,7 @@
-import * as ExternalRedux from 'external-redux';
 import {
   createStore,
   applyMiddleware,
+  Middleware
 } from 'redux';
 import {
   IStoreState
@@ -14,16 +14,9 @@ import * as createLogger from 'redux-logger';
 import reducer from './reducers/reducer';
 import thunk from 'redux-thunk';
 
-
-type applyMiddleWareType = typeof ExternalRedux.applyMiddleware;
-type middlewareType = ExternalRedux.IMiddleware<IStoreState>;
-type creatStoreType = typeof ExternalRedux.createStore;
-type storeType = ExternalRedux.IStore<IStoreState>;
-
 export default function getConfiguredStore() {
-  const middlewares = [thunk as middlewareType, createLogger() as middlewareType];
-  // TODO: the casting of `reduxLogger` might not be correct:
-  const temp = (applyMiddleware as applyMiddleWareType)<IStoreState>(...middlewares);
+  const middlewares = [thunk as Middleware, createLogger() as Middleware];
+  const enhancers = applyMiddleware(...middlewares);
 
   // Redux store:
   const store = createStore(
@@ -31,7 +24,7 @@ export default function getConfiguredStore() {
       // Let the store start out with an empty list of items:
       items: undefined,
       fetchStatus: undefined
-  } as IStoreState, temp) as any as storeType
+  }, enhancers)
 
   // Persist the state to `localStorage` whenever the state changes but not more
   // often than every 2 seconds:
