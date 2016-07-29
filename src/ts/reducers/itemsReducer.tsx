@@ -11,7 +11,7 @@ import {
 import MenuItem from '../models/MenuItem';
 import * as _ from 'lodash';
 import {v4} from 'node-uuid';
-import {IReducer} from 'external-redux';
+import {Reducer} from 'redux';
 import {
   extend
 } from '../utils/Utils';
@@ -50,7 +50,7 @@ function getModifiedItem(item: MenuItem, action: IActionModify): MenuItem {
 // list of menu items. Initial state of `items` (in case no initial state can be
 // provided e.g. no locally stored data) in the store will be empty list of
 // items:
-const itemsReducer: IReducer<MenuItem[]> = (currentItems: MenuItem[] = [], action: IAction): MenuItem[] => {
+const itemsReducer: Reducer<MenuItem[]> = (currentItems: MenuItem[] = [], action: IAction): MenuItem[] => {
   const {type} = action;
   let newItems: MenuItem[];
   if (type === ActionType.ADD_ITEM) {

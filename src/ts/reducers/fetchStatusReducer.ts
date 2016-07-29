@@ -9,16 +9,14 @@ import {
 } from '../utils/Interfaces';
 import {
   combineReducers,
+  Reducer
 } from 'redux';
-import {
-  IReducer
-} from 'external-redux';
 
 // Reducer for the `isFetching` part of the Redux store. Set `isFetching` to
 // `true` when a fetch begins and to `false` when a fetch has finished. It also
 // records the error message, if any, from the fetch operation. Initial state is
 // `false` (not fetching) and no error message.
-const fetchStatusReducer: IReducer<IStoreFetchStatus> =
+const fetchStatusReducer: Reducer<IStoreFetchStatus> =
   (currentFetchStatus: IStoreFetchStatus = {isFetching: false, message: null},
     action: IAction): IStoreFetchStatus => {
 

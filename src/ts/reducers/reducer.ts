@@ -1,6 +1,6 @@
 import {
-  IReducer
-} from 'external-redux';
+  Reducer
+} from 'redux';
 import {
   combineReducers,
 } from 'redux';
@@ -15,7 +15,6 @@ import {
 import fetchStatusReducer from './fetchStatusReducer';
 import {
   IStoreState,
-  IAction
 } from '../utils/Interfaces';
 import MenuItem from '../models/MenuItem';
 
@@ -26,7 +25,7 @@ import MenuItem from '../models/MenuItem';
 const reducer = combineReducers({
   items: itemsReducer,
   fetchStatus: fetchStatusReducer
-}) as IReducer<IStoreState>
+}) as Reducer<IStoreState>
 
 export default reducer;
 

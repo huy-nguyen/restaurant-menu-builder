@@ -42,18 +42,18 @@ export default class MenuItemAdder extends React.Component<IProps, IState> {
       description: (e.target as any).value
     } as IState);
   }
-  private onUndercookedChange = (e: React.FormEvent) => {
+  private onUndercookedChange = (e: React.FormEvent<HTMLInputElement>) => {
     this.setState({
       isUndercooked: (e.target as any).checked
     } as IState)
   }
-  private onVegetarianChange = (e: React.FormEvent) => {
+  private onVegetarianChange = (e: React.FormEvent<HTMLInputElement>) => {
     this.setState({
       isVegetarian: (e.target as any).checked
     } as IState)
   }
 
-  private onSubmit = (e: React.FormEvent) => {
+  private onSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     this.props.addItemCallback(_.clone(this.state));
     this.setState(this.getDefaultState());
@@ -100,7 +100,7 @@ export default class MenuItemAdder extends React.Component<IProps, IState> {
 
           {/* Third row of inputs:*/}
           <div>
-          <button type='submit' class='btn btn-default' onClick={this.onSubmit}>Add Item</button>
+          <button type='submit' className='btn btn-default' onClick={this.onSubmit}>Add Item</button>
           </div>
       </form>
     );
