@@ -1,14 +1,25 @@
 {
   "name": "restaurant-menu-builder-2",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "A technology demonstration, in the form of a simple restaurant menu builder, for Redux, React, Webpack, TypeScript and Bootstrap",
+  "keywords": [
+    "webpack",
+    "react",
+    "redux",
+    "typescript",
+    "bootstrap"
+  ],
   "main": "index.js",
   "scripts": {
     "build": "npm install && typings install && webpack",
     "webpack": "webpack"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Huy Nguyen <huy@huy-nguyen.com> (http://www.huy-nguyen.com/)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/huy-nguyen/restaurant-menu-builder.git"
+  },
   "devDependencies": {
     "css-loader": "^0.23.1",
     "sass-loader": "^3.2.0",
