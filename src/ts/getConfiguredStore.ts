@@ -15,7 +15,23 @@ import reducer from './reducers/reducer';
 import thunk from 'redux-thunk';
 
 export default function getConfiguredStore() {
-  const middlewares = [thunk as Middleware, createLogger() as Middleware];
+  let middlewares: Middleware[];
+  try {
+    if (PRODUCTION) {
+      middlewares = [thunk as Middleware];
+    } else {
+      // Add logger middleware in dev mode:
+      middlewares = [thunk as Middleware, createLogger() as Middleware];
+    }
+  } catch(e) {
+    if (e.name === 'ReferenceError') {
+      console.log(e);
+      console.log('Must define the value of PRODUCTION global variable in webpack config. Set to false for now.');
+      middlewares = [thunk as Middleware, createLogger() as Middleware];
+    } else {
+      throw e;
+    }
+  }
   const enhancers = applyMiddleware(...middlewares);
 
   // Redux store:
