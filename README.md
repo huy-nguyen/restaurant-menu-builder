@@ -13,3 +13,7 @@ To build:
 - Run `npm run build`.
 
 - Start up a new webserver or point yours to the `src` directory.
+
+# Note:
+
+- While debugging with Chrome Dev tools, use the `webpack:///./~/` pattern to blackbox third-party libraries.
