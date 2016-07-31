@@ -11,8 +11,9 @@
   ],
   "main": "index.js",
   "scripts": {
-    "build": "npm install && typings install && webpack",
-    "webpack": "webpack"
+    "build": "webpack",
+    "webpack": "webpack",
+    "start": "webpack-dev-server",
   },
   "author": "Huy Nguyen <huy@huy-nguyen.com> (http://www.huy-nguyen.com/)",
   "license": "MIT",
