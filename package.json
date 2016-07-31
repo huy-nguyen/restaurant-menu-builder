@@ -14,6 +14,7 @@
     "build": "webpack",
     "webpack": "webpack",
     "start": "webpack-dev-server",
+    "stats": "webpack --profile --json > stats.json"
   },
   "author": "Huy Nguyen <huy@huy-nguyen.com> (http://www.huy-nguyen.com/)",
   "license": "MIT",
