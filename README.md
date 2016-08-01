@@ -1,19 +1,53 @@
-## Restaurant Menu Builder
+# Restaurant Menu Builder
 
-A Restaurant menu builder built with React, Redux, TypeScript and Webpack.
+A technology demonstration, in the form of a simple restaurant menu management app, that integrates the following technologies:
 
-To build:
+- [Redux](http://redux.js.org/) for the app's model layer.
 
-- Install Compass following the instructions (here)[http://compass-style.org/install/].
+- [React](https://facebook.github.io/react/) for the app's view layer.
 
-- `cd` to the `src` directory and run `compass compile`.
+- [TypeScript](http://www.typescriptlang.org/) as the scripting language.
 
-- Run `npm install`.
+- [Webpack](https://webpack.github.io/) for build and bundling.
 
-- Run `npm run build`.
+- [Bootstrap](http://getbootstrap.com/) for styling.
 
-- Start up a new webserver or point yours to the `src` directory.
+- [Karma](https://karma-runner.github.io/1.0/index.html)/[Mocha](https://mochajs.org/) for testing.
 
-# Note:
+- [SASS](http://sass-lang.com/) for styling. Here we use [Libsass](http://sass-lang.com/libsass) instead of Ruby SASS.
+
+Visual aesthetics is not the main purpose of this application.
+
+## Overview
+
+The UI has two panels: the left-hand panel for adding, selecting/deselecting or deleting menu items and the right-hand one for immediate viewing of the resulting menu.
+
+Each menu item has the following properties:
+
+- Category, e.g desserts, vegetables, snacks and so on.
+
+- Name: name of the menu item.
+
+- Description: description of the menu item. Usually the ingredients.
+
+- Price, in dollars.
+
+- Whether or not the item is vegetarian.
+
+- Whether or not the item is undercooked. Sometimes food can contain foodstuffs that are undercooked, like a medium­rare steak, which restaurants must report by law.
+
+## Build
+
+- On the command line, `cd` to the project directory
+
+- Run `npm install`. If you don't have `npm` already installed, follow the instructions [here](https://docs.npmjs.com/getting-started/installing-node).
+
+- To do development, run `npm run start`. This will start a web server on port `8080` so point your web browser to `http://localhost:8080/` to see a working version of the app. Because [Hot Module Replacement](https://webpack.github.io/docs/hot-module-replacement.html) is enabled, any SASS changes will take effect right away without reloading and any TypeScript changes will take effect after a refresh.
+
+- To build for production, run `npm run build`. The resulting app is in the `dist` directory in the project directory. `index.html` is the entry point.
+
+- To run tests, execute `npm test`.
+
+## Note:
 
 - While debugging with Chrome Dev tools, use the `webpack:///./~/` pattern to blackbox third-party libraries.
