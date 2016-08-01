@@ -38,8 +38,23 @@ const common = {
   module: {
     loaders: [
       {
-        test: /\.tsx?$/,
+        // Use unmodified `tsconfig.json` for non-test ts files i.e. files that
+        // don't contain `spec` in their names:
+        test: absPath => absPath.match(/\.tsx?$/) && !absPath.match(/\.spec\.tsx?$/),
         loader: 'ts-loader'
+      },
+      {
+        // Override `compilerOptions` in `tsconfig.json` with the options
+        // specified here for test ts files. The main reason is that it's very
+        // inconvenient to declare typing info for every variable created during
+        // tests:
+        test: /\.spec\.tsx?$/,
+        loader: 'ts-loader',
+        query: {
+          compilerOptions: {
+            noImplicitAny: false
+          }
+        }
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -51,7 +66,6 @@ const common = {
           limit: 5000,
           mimetype: 'application/font-woff'
         },
-        // include: PATHS.fonts
       },
       {
         test: /\.(ttf|eot|svg)$/,
@@ -59,7 +73,6 @@ const common = {
         query: {
           name: 'font/[hash].[ext]'
         },
-        // include: PATHS.fonts
       },
       {
         test: /\.hbs$/,
@@ -109,10 +122,6 @@ switch(process.env.npm_lifecycle_event) {
       parts.setFreeVariable(
         'PRODUCTION',
         false),
-      parts.extractBundle({
-        name: 'vendor',
-        entries: Object.keys(pgk.dependencies)
-      }),
       parts.extractSASS(PATHS.style, 'hash'),
       parts.devServer({
         host: process.env.HOST,
