@@ -1,0 +1,6 @@
+// This file is the dev style sheet. The only difference between this and the
+// production stylesheet is that bootstrap comes from a local npm package. It is
+// intended to contain only one user `@import`:
+@import "~bootstrap/dist/css/bootstrap.css";
+
+@import "_main";

@@ -1,22 +1,24 @@
 const validate = require('webpack-validator');
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
 const parts = require('./webpack-parts');
 const pgk = require('./package.json');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const PATHS = {
   scriptEnry: path.join(__dirname, 'src', 'ts'),
   app: path.join(__dirname, 'src'),
-  style: path.join(__dirname, 'src', 'sass', 'style.scss'),
-  cssOutput: path.join(__dirname, 'src', 'css', 'style.css'),
+  style: path.join(__dirname, 'src', 'sass'),
+  productionStylesheet: path.join(__dirname, 'src', 'sass', 'style.scss'),
+  devStylesheet: path.join(__dirname, 'src', 'sass', 'dev_style.scss'),
   build: path.join(__dirname, 'dist')
 };
 
 const common = {
   entry: {
     app: PATHS.scriptEnry,
-    style: PATHS.style
+    devStylesheet: PATHS.devStylesheet,
+    productionStylesheet: PATHS.productionStylesheet
   },
   output: {
     path: PATHS.build,
@@ -29,12 +31,6 @@ const common = {
   resolve: {
     extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: 'Restaurant menu builder',
-      template: 'src/index.hbs'
-    })
-  ],
   module: {
     loaders: [
       {
@@ -82,20 +78,29 @@ const common = {
   }
 }
 
-var config;
+let config, isProduction;
 
 switch(process.env.npm_lifecycle_event) {
   // Triggered when `webpack` is run with `npm run build` or `npm run stats`:
   case 'build':
     // Intentional fall through:
   case 'stats':
+    isProduction = true;
     config = merge(
       common,
       {
         output: {
           filename: '[name].[chunkhash].js',
           chunkFilename: '[chunkhash].js'
-        }
+        },
+        plugins: [
+          new HtmlWebpackPlugin({
+            title: 'Restaurant menu builder',
+            template: 'src/index.hbs',
+            chunks: ['productionStylesheet', 'manifest', 'vendor', 'app'],
+            PRODUCTION: isProduction
+          })
+        ]
       },
       parts.clean(PATHS.build),
       // Enable production mode in React (no logging/warning, no `propTypes`
@@ -105,7 +110,7 @@ switch(process.env.npm_lifecycle_event) {
         'production'),
       parts.setFreeVariable(
         'PRODUCTION',
-        true),
+        isProduction),
       parts.extractBundle({
         name: 'vendor',
         entries: Object.keys(pgk.dependencies)
@@ -115,14 +120,31 @@ switch(process.env.npm_lifecycle_event) {
     );
     break;
   default:
+    isProduction = false;
     config = merge(common,
       {
         devtool: 'source-map',
+        module: {
+          loaders: [
+            {
+              test: /\.scss$/,
+              loaders: ['style', 'css?sourceMap', 'sass?sourceMap'],
+              include: PATHS.style,
+            }
+          ]
+        },
+        plugins: [
+          new HtmlWebpackPlugin({
+            title: 'Restaurant menu builder',
+            template: 'src/index.hbs',
+            chunks: ['devStylesheet', 'manifest', 'app'],
+            PRODUCTION: isProduction
+          })
+        ]
       },
       parts.setFreeVariable(
         'PRODUCTION',
-        false),
-      parts.extractSASS(PATHS.style, 'hash'),
+        isProduction),
       parts.devServer({
         host: process.env.HOST,
         port: process.env.PORT
