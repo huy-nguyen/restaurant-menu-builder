@@ -71,23 +71,6 @@ exports.extractBundle = function(options) {
   }
 }
 
-exports.extractCSS = function(paths, hashMethod) {
-  return {
-    module: {
-      loaders: [
-        {
-          test: /\.css$/,
-          loader: ExtractTextPlugin.extract('style', 'css'),
-          include: paths
-        }
-      ]
-    },
-    plugins: [
-      new ExtractTextPlugin('[name].[' + hashMethod +'].css')
-    ]
-  }
-}
-
 // `hashMethod` can either be 'hash' for dev or 'chunkhash` for // production.
 exports.extractSASS = function(paths, hashMethod) {
   assert(hashMethod === 'hash' || hashMethod === 'chunkhash', 'Invalid value for hashMethod');
