@@ -73,6 +73,13 @@ const common = {
       {
         test: /\.hbs$/,
         loader: 'handlebars-loader'
+      },
+      {
+        test: /\.json$/,
+        loader: 'file-loader',
+        query: {
+          name: '[hash].[name].[ext]'
+        }
       }
     ]
   }

@@ -29,6 +29,11 @@ import {
 }from '../reducers/reducer';
 import {Promise}  from 'es6-promise';
 
+// Webpack will locate the JSON file in the `src/data` directory, copy it to the
+// build directory and return a URL (with hash) that can be used in the AJAX
+// call:
+const dataFileURL = require('../../data/menu_items.json');
+
 /** Action creators */
 export const addItem = (data: IMenuItemMetaData): IActionAdd => ({
   type: ActionType.ADD_ITEM,
@@ -95,7 +100,7 @@ export const fetchMenuItems: IThunk<IStoreState> = () => {
         // Otherwise, fetch data from the API and shows the loading spinner until
         // the data has finished loading:
         result = ajax({
-          url: '../src/data/menu_items.json',
+          url: dataFileURL,
           dataType: 'json'
         }).then(
           // Here we use the two-callback form of `then` because we want `onFailure`
