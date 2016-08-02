@@ -8,15 +8,16 @@
 // Usage:
 // const mockStore = configureStore();
 
-import {Store} from 'redux';
+declare module 'redux-mock-store' {
+  import {Store, Action} from 'redux';
 
-interface MockStore extends Store {
-    getState():any;
-    getActions():Array<any>;
-    dispatch(action:any):any;
-    clearActions():void;
-    subscribe():any;
+  interface MockStore<StoreState> extends Store<StoreState> {
+      getState():any;
+      getActions():Array<any>;
+      dispatch(action: Action):any;
+      clearActions():void;
+      subscribe():any;
+  }
+  export default function configureStore<StoreState>(...args:any[]):(...args:any[]) => MockStore<StoreState>;
 }
 
-declare function configureStore(...args:any[]):(...args:any[]) => MockStore;
-export = configureStore;
