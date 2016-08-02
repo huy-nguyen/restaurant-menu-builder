@@ -36,6 +36,18 @@ Each menu item has the following properties:
 
 - Whether or not the item is undercooked. Sometimes food can contain foodstuffs that are undercooked, like a medium­rare steak, which restaurants must report by law.
 
+The user interface:
+
+- The left panel is used to edit menu items.
+
+    - Click on each menu item to toggle that item's inclusion in the menu.
+
+    - Click "Delete" to remove that item from the database.
+
+    - Fill in the form at the top to add new items.
+
+- The right panel is a live preview of the menu.
+
 ## Build
 
 - On the command line, `cd` to the project directory
