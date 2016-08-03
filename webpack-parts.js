@@ -3,6 +3,72 @@ const assert = require('assert');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
+
+const PATHS = {
+  tsDir: path.join(__dirname, 'src', 'ts'),
+  appDir: path.join(__dirname, 'src'),
+  styleDir: path.join(__dirname, 'src', 'sass'),
+  productionStylesheet: path.join(__dirname, 'src', 'sass', 'style.scss'),
+  devStylesheet: path.join(__dirname, 'src', 'sass', 'dev_style.scss'),
+  buildDir: path.join(__dirname, 'dist'),
+  testDir: path.join(__dirname, 'src', 'specs'),
+  handlebarsHelpersDir: path.join(__dirname, 'handlebars_helpers')
+}
+exports.PATHS = PATHS;
+
+exports.commonResolution = {
+  resolve: {
+    extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
+  }
+}
+
+exports.nodeEnvs = {
+  production: 'production',
+  test: 'test',
+  'development': 'development'
+}
+
+exports.commonLoaders = {
+  module: {
+    loaders: [
+      {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        // Inline small woff files and output them below font/.
+        // Set mimetype just in case.
+        loader: 'url',
+        query: {
+          name: 'font/[hash].[ext]',
+          limit: 5000,
+          mimetype: 'application/font-woff'
+        },
+      },
+      {
+        test: /\.(ttf|eot|svg)$/,
+        loader: 'file',
+        query: {
+          name: 'font/[hash].[ext]'
+        },
+      },
+      {
+        test: /\.hbs$/,
+        loader: 'handlebars-loader',
+        query: {
+          helperDirs: PATHS.handlebarsHelpersDir,
+        }
+
+      },
+      {
+        test: /\.json$/,
+        loader: 'file-loader',
+        query: {
+          name: '[hash].[name].[ext]'
+        }
+      }
+    ]
+  }
+}
+
 
 exports.devServer = function(options) {
   return {
