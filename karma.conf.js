@@ -2,7 +2,7 @@
 // Generated on Sun Jul 31 2016 14:47:51 GMT-0700 (PDT)
 
 const fileGlob = 'src/specs/*.ts';
-const webpackConfig = require('./webpack.config.js');
+const webpackConfig = require('./webpack.test.config.js');
 
 module.exports = function(config) {
   config.set({

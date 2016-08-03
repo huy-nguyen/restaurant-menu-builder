@@ -16,7 +16,7 @@ A technology demonstration, in the form of a simple restaurant menu management a
 
 - [SASS](http://sass-lang.com/) for styling. Here we use [Libsass](http://sass-lang.com/libsass) instead of Ruby SASS.
 
-Visual aesthetics is not the main purpose of this application.
+To view the app live, click [here](https://huy-nguyen.github.io/restaurant-menu-builder/). Please note that visual aesthetics is not the main purpose of this app.
 
 ## Overview
 

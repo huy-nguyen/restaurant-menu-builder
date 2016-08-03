@@ -1,5 +1,3 @@
-declare var PRODUCTION: boolean
-
 /* Test-relatd ambient declarations: */
 // Essentially we are disabling type checking for these test libraries because
 // such type checking isn't very useful in test assertions.
