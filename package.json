@@ -15,8 +15,8 @@
     "build": "npm run delete && webpack --config webpack.production.config.js",
     "webpack": "npm run delete && webpack",
     "start": "npm run delete && webpack-dev-server",
-    "stats": "npm run delete && webpack --profile --json > stats.json",
-    "test": "npm run delete && karma start"
+    "stats": "npm run delete && webpack --config webpack.production.config.js --profile --json > stats.json",
+    "test": "npm run delete && karma start",
   },
   "author": "Huy Nguyen <huy@huy-nguyen.com> (http://www.huy-nguyen.com/)",
   "license": "MIT",
