@@ -1,5 +1,7 @@
 # Restaurant Menu Builder
 
+[![travis build](https://img.shields.io/travis/huy-nguyen/restaurant-menu-builder.svg)](https://travis-ci.org/huy-nguyen/restaurant-menu-builder/)
+
 A technology demonstration, in the form of a simple restaurant menu management app, that integrates the following technologies:
 
 - [Redux](http://redux.js.org/) for the app's model layer.
