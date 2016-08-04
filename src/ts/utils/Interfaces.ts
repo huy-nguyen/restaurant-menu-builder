@@ -90,34 +90,50 @@ export enum ActionType {
   FETCH_SUCESS_LOCAL,
 }
 
+// Analytics-related interfaces:
+// The type variable `T` is the type of the analytics payload.
+export interface IAnalyticsPayload<T> {
+  info: T
+}
+export interface IAnalyticsAction<T> {
+  type: string,
+  payload: IAnalyticsPayload<T>
+}
+// Actions that go through analytics:
+export interface ITrackableAction<T> {
+  meta: {
+    analytics: IAnalyticsAction<T>
+  }
+}
+
 // Actions whose only purpose is to notification e.g. start of a fetch:
 export interface IActionNotify {
   type: ActionType
 }
 
-export interface IActionFetchFailure {
+export interface IActionFetchFailure extends ITrackableAction<string> {
   type: ActionType,
   message: string
 }
 
 // Actions that change existing items:
-export interface IActionModify extends Action {
+export interface IActionModify extends Action, ITrackableAction<string> {
   type: ActionType
   id: string
 }
 
 // Action to add new item:
-export interface IActionAdd extends Action {
+export interface IActionAdd extends Action, ITrackableAction<IMenuItemMetaData> {
   type: ActionType
   data: IMenuItemMetaData
 }
 
-export interface IActionReceiveItemsFromAPI extends Action {
+export interface IActionReceiveItemsFromAPI extends Action, ITrackableAction<IMenuItemRaw[]> {
   type: ActionType
   data: IMenuItemRaw[]
 }
 
-export interface IActionReceiveItemsFromLocal extends Action {
+export interface IActionReceiveItemsFromLocal extends Action, ITrackableAction<MenuItem[]> {
   type: ActionType
   data: MenuItem[]
 }
