@@ -37,17 +37,41 @@ const dataFileURL = require('../../data/menu_items.json');
 /** Action creators */
 export const addItem = (data: IMenuItemMetaData): IActionAdd => ({
   type: ActionType.ADD_ITEM,
-  data
+  data,
+  meta: {
+    analytics: {
+      type: ActionType[ActionType.ADD_ITEM],
+      payload: {
+        info: data
+      }
+    }
+  }
 })
 
 export const removeItem = (id: string): IActionModify => ({
   type: ActionType.REMOVE_ITEM,
-  id
+  id,
+  meta: {
+    analytics: {
+      type: ActionType[ActionType.REMOVE_ITEM],
+      payload: {
+        info: id
+      }
+    }
+  }
 });
 
 export const toggleItem = (id: string): IActionModify => ({
   type: ActionType.TOGGLE_SELECT,
-  id
+  id,
+  meta: {
+    analytics: {
+      type: ActionType[ActionType.TOGGLE_SELECT],
+      payload: {
+        info: id
+      }
+    }
+  }
 });
 
 // This is a "thunk" representing the sequence of events surrounding a fetch.

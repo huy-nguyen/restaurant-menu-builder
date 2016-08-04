@@ -1,3 +1,7 @@
+declare module 'redux-analytics' {
+  function a(...a: any[]) : any
+  export = a;
+}
 /* Test-relatd ambient declarations: */
 // Essentially we are disabling type checking for these test libraries because
 // such type checking isn't very useful in test assertions.
@@ -24,6 +28,10 @@ declare module 'chai-deep-match' {
   export = a;
 }
 
+declare module 'sinon-chai' {
+  var a: any;
+  export = a;
+}
 declare module 'sinon' {
   var a: any;
   export = a;

@@ -1,8 +1,9 @@
 import getConfiguredStore from '../ts/getConfiguredStore';
+import * as _ from 'lodash'
 
 describe('Redux store', () => {
   beforeEach(() => {
-    this.store = getConfiguredStore();
+    this.store = getConfiguredStore(_.noop);
   })
   afterEach(() => {
     this.store = null;
