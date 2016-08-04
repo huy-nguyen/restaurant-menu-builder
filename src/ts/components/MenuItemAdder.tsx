@@ -27,17 +27,17 @@ export default class MenuItemAdder extends React.Component<IProps, IState> {
       price: 0
     };
   }
-  private onNameChange = (e: Event) => {
+  private onNameChange = (e: React.FormEvent<HTMLElement>) => {
     this.setState({
       name: (e.target as any).value
     } as IState);
   }
-  private onCategoryChange = (e: Event) => {
+  private onCategoryChange = (e: React.FormEvent<HTMLElement>) => {
     this.setState({
       category: (e.target as any).value
     } as IState);
   }
-  private onDescriptionChange = (e: Event) => {
+  private onDescriptionChange = (e: React.FormEvent<HTMLElement>) => {
     this.setState({
       description: (e.target as any).value
     } as IState);
