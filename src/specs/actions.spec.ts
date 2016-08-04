@@ -18,7 +18,6 @@ import thunk from 'redux-thunk';
 import sinon = require('sinon');
 import chaiDeepMatch = require('chai-deep-match');
 
-console.log(chai.use);
 chai.use(chaiDeepMatch);
 
 function extractReadData(item: MenuItem) {
@@ -35,7 +34,7 @@ type StoreType = Store<IStoreState>;
 
 describe('Synchronoous actions', () => {
   beforeEach(() => {
-    this.store = getConfiguredStore();
+    this.store = getConfiguredStore(_.noop);
   })
   afterEach(() => {
     this.store = null;

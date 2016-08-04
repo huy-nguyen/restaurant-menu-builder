@@ -28,6 +28,10 @@ declare module 'chai-deep-match' {
   export = a;
 }
 
+declare module 'sinon-chai' {
+  var a: any;
+  export = a;
+}
 declare module 'sinon' {
   var a: any;
   export = a;
