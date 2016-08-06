@@ -11,7 +11,7 @@ script:
 - npm test
 - npm run build
 
-after success:
+after_success:
 - $(npm bin)/set-up-ssh --key "$encrypted_80c49b52f7d7_key" --iv "$encrypted_80c49b52f7d7_iv"
   --path-encrypted-key "travis_github_deploy_key.enc"
 - bash deploy.sh
