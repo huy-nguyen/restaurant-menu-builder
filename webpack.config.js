@@ -13,8 +13,7 @@ const NODE_ENV = nodeEnvs.development;
 const config = merge(
   {
     entry: {
-      app: PATHS.tsDir,
-      devStylesheet: PATHS.devStylesheet,
+      app: PATHS.scriptEntryWithStyle,
     },
     devtool: 'source-map',
     output: {
@@ -48,8 +47,8 @@ const config = merge(
     plugins: [
       new HtmlWebpackPlugin({
         title: 'Development',
-        template: 'src/index.hbs',
-        chunks: ['devStylesheet', 'manifest', 'app'],
+        template: PATHS.indexTemplate,
+        chunks: ['app'],
         NODE_ENV
       })
     ]
