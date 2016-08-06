@@ -13,8 +13,7 @@ const NODE_ENV = nodeEnvs.development;
 const config = merge(
   {
     entry: {
-      app: PATHS.tsDir,
-      devStylesheet: PATHS.devStylesheet,
+      app: PATHS.scriptEntryWithStyle,
     },
     devtool: 'source-map',
     output: {
