@@ -20,6 +20,8 @@ A technology demonstration, in the form of a simple restaurant menu management a
 
 - [Google Analytics](https://analytics.google.com).
 
+- [Travis CI](https://travis-ci.org/) for build and deployment.
+
 To view the app live, click [here](https://huy-nguyen.github.io/restaurant-menu-builder/). Please note that visual aesthetics is not the main purpose of this app.
 
 ## Overview
