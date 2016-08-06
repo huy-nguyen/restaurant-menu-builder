@@ -12,7 +12,7 @@ const NODE_ENV = nodeEnvs.production
 const config = merge(
   {
     entry: {
-      app: PATHS.tsDir,
+      app: PATHS.scriptEntryWithoutStyle,
       productionStylesheet: PATHS.productionStylesheet
     },
     output: {
@@ -54,7 +54,7 @@ const config = merge(
     plugins: [
       new HtmlWebpackPlugin({
         title: 'Restaurant menu builder',
-        template: 'src/index.hbs',
+        template: PATHS.indexTemplate,
         chunks: ['productionStylesheet', 'manifest', 'vendor', 'app'],
         NODE_ENV
       })

@@ -12,7 +12,7 @@ const config = merge(
   {
     entry: {
       // No style output for test.
-      app: PATHS.tsDir,
+      app: PATHS.scriptEntryWithoutStyle,
     },
     output: {
       path: PATHS.buildDir,

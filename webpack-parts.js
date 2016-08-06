@@ -8,12 +8,17 @@ const path = require('path');
 const PATHS = {
   tsDir: path.join(__dirname, 'src', 'ts'),
   appDir: path.join(__dirname, 'src'),
+  // In dev, the styles can just be inserted as a `style` tag in the DOM but in
+  // production, styles should come in their own stylsheets.
+  scriptEntryWithStyle: path.join(__dirname, 'src', 'ts', 'devIndex.js'),
+  scriptEntryWithoutStyle: path.join(__dirname, 'src', 'ts', 'index.js'),
   styleDir: path.join(__dirname, 'src', 'sass'),
   productionStylesheet: path.join(__dirname, 'src', 'sass', 'style.scss'),
   devStylesheet: path.join(__dirname, 'src', 'sass', 'dev_style.scss'),
   buildDir: path.join(__dirname, 'dist'),
   testDir: path.join(__dirname, 'src', 'specs'),
-  handlebarsHelpersDir: path.join(__dirname, 'handlebars_helpers')
+  handlebarsHelpersDir: path.join(__dirname, 'handlebars_helpers'),
+  indexTemplate: path.join(__dirname, 'src', 'index.hbs')
 }
 exports.PATHS = PATHS;
 

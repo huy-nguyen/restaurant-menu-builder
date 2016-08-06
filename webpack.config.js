@@ -48,8 +48,8 @@ const config = merge(
     plugins: [
       new HtmlWebpackPlugin({
         title: 'Development',
-        template: 'src/index.hbs',
-        chunks: ['devStylesheet', 'manifest', 'app'],
+        template: PATHS.indexTemplate,
+        chunks: ['app'],
         NODE_ENV
       })
     ]
