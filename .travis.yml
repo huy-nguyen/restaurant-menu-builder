@@ -1,16 +1,24 @@
 language: node_js
+
 node_js:
 - '6'
+
 before_install:
 - openssl aes-256-cbc -K $encrypted_80c49b52f7d7_key -iv $encrypted_80c49b52f7d7_iv
   -in travis_github_deploy_key.enc -out travis_github_deploy_key -d
+
 script:
 - npm test
 - npm run build
+
 after success:
 - $(npm bin)/set-up-ssh --key "$encrypted_80c49b52f7d7_key" --iv "$encrypted_80c49b52f7d7_iv"
   --path-encrypted-key "travis_github_deploy_key.enc"
-- npm run deploy
+- bash deploy.sh
+
+branches:
+  except:
+    - gh-pages
 env:
   global:
     secure: laqseuLK5USPrCKK7c7IBHsFoTdKErG9q9jHQ597C+V8ub01M2Lr12g378Nxbpp+mJRS2XiLa1VrDP0xeXusgV+nNzxL8TLEGjD2MnZEu3TZmtBy0TGb7T1oAVAe4fPh875J3ozm4GzwjcRwa6Qkls+ekYfqshUdSynU3Eu7HyeXC8F8H8vnZXYdAcnU1JqZOqXtFNYWQkz6noKUJpRvYL4059KKtpUTqegFUfxWINbwWX34hO7p26b8cOZpSDFv8/j2EB6FhE0TndeB7ymtlncyq2x5gfCOzGCaDeHx/gYPiWUnsKMk2HosYMRMbsVrbpRcG3awJUbNZaEjfwHrA/XDUyHqvTp4qlFRO6qwOz4enwRZyAs9n/ZVqwxve8RS2diiYTYbwHg8d4jVN5SnXus8/MgiT2ap++4X8IHH6KNLo8K6wX2IVDHX1RYoFsMuND5SiXiEpoTQJmD2cCcdELwVrsf4CyEhYGS5wsnCe2C4TYPOBJGp3fk93lkLis01lPkYgyW2zsu+jyM9jyjN0n9AH5NMUewblODAdRe+fAoCBp1TjjI18QvuVtbqLk/K4DV5074KNSwbZoiJ6IClTAoxg+0iMDN91XBl/yvl+YWVcRt6tIfnnvlQqGqkqxucAN+99eQKRWakaszJGcVyBrRXxFslPsOyyfozLSrlSuc=
