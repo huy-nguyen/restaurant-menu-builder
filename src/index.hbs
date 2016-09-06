@@ -19,8 +19,8 @@
   {{! Load popular JS libraries through a CDN in production only. In dev, a local copy will be used instead. }}
   {{#equal htmlWebpackPlugin.options.NODE_ENV 'production'}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="https://npmcdn.com/react@15.3.0/dist/react.min.js"></script>
-    <script src="https://npmcdn.com/react-dom@15.3.0/dist/react-dom.min.js"></script>
+    <script src="https://unpkg.com/react@15.3.0/dist/react.min.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.0/dist/react-dom.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.14.1/lodash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.string/3.3.4/underscore.string.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/classnames/2.2.5/index.min.js"></script>
